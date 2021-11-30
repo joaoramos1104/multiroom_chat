@@ -2,10 +2,10 @@ const { response } = require("../../config/server");
 
 module.exports = function(application){
     application.post('/chat', function(request, response){
-        response.render('chat');
+        application.app.controllers.chat.iniciaChat(application, request, response);
     });
 
     application.get('/chat', function(request, response){
-        response.render('chat');
+        application.app.controllers.chat.iniciaChat(application, request, response);
     });
 }
