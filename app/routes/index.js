@@ -1,7 +1,6 @@
-// const { response } = require("../../config/server");
 
 module.exports = function(application){
-    application.get('/', function(request, response){
-        application.app.controllers.index.home(application, request, response);
+    application.get('/', function(req, res){
+        application.app.controllers.index.home(application, req, res);
     });
 }

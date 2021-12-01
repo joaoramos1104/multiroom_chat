@@ -1,3 +1,3 @@
-module.exports.home = function(application, request, response){
-    response.render('index');
+module.exports.home = function(application, req, res){
+    res.render('index', {validacao: {}});
 }
