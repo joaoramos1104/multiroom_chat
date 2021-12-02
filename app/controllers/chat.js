@@ -12,15 +12,15 @@ module.exports.iniciaChat = async function(application, req, res){
 
     const validationResults = validationResult(req);
 
-    var apelido = req.body;
+    var dadosForm = req.body;
     if (!validationResults.isEmpty()) {
 
          res.render("index", { validacao: validationResults.array()})
         
     } else {
     
-      application.get('io').emit('msgParaCliente',{apelido: apelido.apelido, mensagem: ' acabou de  entrar no chat'});
-        res.render("chat");
+      application.get('io').emit('msgParaCliente',{apelido: dadosForm.apelido, mensagem: ' acabou de  entrar no chat'});
+        res.render("chat", {dadosForm: dadosForm});
     }
     
 

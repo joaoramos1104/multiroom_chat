@@ -18,5 +18,10 @@ io.on('connection', function(socket){
     socket.on('disconnect', function(){
         console.log("usuário dsconecou");
     });
+
+    socket.on('msgParaServidor', function(data){
+        socket.emit('msgParaCliente', {apelido: data.apelido, mensagem: data.mensagem});
+        socket.broadcast.emit('msgParaCliente', {apelido: data.apelido, mensagem: data.mensagem});
+    });
     
 });
