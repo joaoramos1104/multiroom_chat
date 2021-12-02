@@ -1,4 +1,5 @@
 const { check, validationResult } = require('express-validator');
+const { emit } = require('../../config/server');
 
 module.exports.iniciaChat = async function(application, req, res){
   await check("apelido")
@@ -11,12 +12,14 @@ module.exports.iniciaChat = async function(application, req, res){
 
     const validationResults = validationResult(req);
 
+    var apelido = req.body;
     if (!validationResults.isEmpty()) {
-            console.log(validationResults.array());
 
          res.render("index", { validacao: validationResults.array()})
         
     } else {
+    
+      application.get('io').emit('msgParaCliente',{apelido: apelido.apelido, mensagem: ' acabou de  entrar no chat'});
         res.render("chat");
     }
     

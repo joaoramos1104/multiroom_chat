@@ -9,6 +9,7 @@ var server = app.listen(8089, function () {
 })
 
 var io = require('socket.io').listen(server);
+app.set('io', io);
 
 /* criar a conexão por websocket */
 io.on('connection', function(socket){
